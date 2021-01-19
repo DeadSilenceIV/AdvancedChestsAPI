@@ -71,6 +71,10 @@ public class DataManager {
         return true;
     }
 
+    public boolean isCompressorAvailable(String chest){return true;}
+
+    public double getCompressorPrice(String chest){return 0.0;}
+
     public boolean isCraftingAvailable(String chest){
         return true;
     }

@@ -3,6 +3,7 @@ package us.lynuxcraft.deadsilenceiv.advancedchests.chest;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
+import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.CompressionStatus;
 import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.SortStatus;
 import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.SortType;
 
@@ -31,6 +32,10 @@ public class AdvancedChest {
         return true;
     }
 
+    public CompressionStatus compress(){
+        return null;
+    }
+
     public boolean isPlayerChangingPage(Player player){
         return true;
     }
@@ -50,7 +55,6 @@ public class AdvancedChest {
     public void setAutomaticSellsStatus(boolean status){ }
 
     public void setMoney(double money){ }
-
 
     public String getType(){
         return "";
