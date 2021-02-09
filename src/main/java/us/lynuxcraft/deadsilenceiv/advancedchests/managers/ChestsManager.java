@@ -1,9 +1,13 @@
 package us.lynuxcraft.deadsilenceiv.advancedchests.managers;
 
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.Inventory;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.AdvancedChest;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ChestsManager {
 
@@ -24,5 +28,7 @@ public class ChestsManager {
     public AdvancedChest getAdvancedChest(Inventory inventory){
         return null;
     }
+
+    public List<AdvancedChest> getAdvancedChests(World world){ return null;}
 
 }

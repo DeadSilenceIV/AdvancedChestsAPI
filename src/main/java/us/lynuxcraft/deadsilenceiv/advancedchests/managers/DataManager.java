@@ -23,6 +23,8 @@ public class DataManager {
         return 0;
     }
 
+    public double getAutoSellsTax(String chest){ return 0;}
+
     public String getInventoryName(String chest){
         return "";
     }

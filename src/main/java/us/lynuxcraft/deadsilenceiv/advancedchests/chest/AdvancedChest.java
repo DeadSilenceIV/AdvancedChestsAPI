@@ -1,32 +1,32 @@
 package us.lynuxcraft.deadsilenceiv.advancedchests.chest;
 
 import org.bukkit.Location;
+import org.bukkit.block.DoubleChest;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
-import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.CompressionStatus;
-import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.SortStatus;
-import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.SortType;
+import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.*;
 
-import java.util.LinkedList;
-import java.util.UUID;
+import java.util.*;
 
-public class AdvancedChest {
+public class AdvancedChest{
 
-    public void openPage(Player player, int page){}
+    public List<UUID> changingPagePlayers;
+
+    public Map<UUID,Integer> lastOpenedPages;
+
+    public void openPage(Player p,int page){}
 
     public void upgrade(String upgrade){}
 
+    public void expandSlots(int amount){}
+
     public void save(){}
 
-    public void remove(BlockBreakEvent blockBreakEvent){}
+    public void remove(BlockBreakEvent event,boolean dropItems){}
+
+    public SortStatus sort(SortType sortType){return null;}
 
     public void sell(Player player){}
-
-    public void closeForViewers(){}
-
-    public SortStatus sort(SortType sortType){
-        return null;
-    }
 
     public boolean smelt(){
         return true;
@@ -36,35 +36,9 @@ public class AdvancedChest {
         return null;
     }
 
-    public boolean isPlayerChangingPage(Player player){
-        return true;
-    }
+    public void reloadTitle(){}
 
-    public boolean isBeingSold(){
-        return true;
-    }
-
-    public boolean isLoaded(){
-        return true;
-    }
-
-    public boolean isAutomaticSellsStatus(){
-        return true;
-    }
-
-    public void setAutomaticSellsStatus(boolean status){ }
-
-    public void setMoney(double money){ }
-
-    public String getType(){
-        return "";
-    }
-
-    public LinkedList<ChestPage> getPages(){
-        return null;
-    }
-
-    public ChestPage getPlayerPage(Player player){
+    public ChestPage getPlayerPage(Player p){
         return null;
     }
 
@@ -72,11 +46,21 @@ public class AdvancedChest {
         return null;
     }
 
-    public ChestTitle getChestTitle(){
+    public void closeForViewers(){}
+
+    public boolean isPlayerChangingPage(Player p){
+        return true;
+    }
+
+    public boolean isBeingSold(){
+        return true;
+    }
+
+    public DoubleChest getDoubleChest(){
         return null;
     }
 
-    public UUID getUniqueId(){
+    public UUID getUniqueId() {
         return null;
     }
 
@@ -92,9 +76,33 @@ public class AdvancedChest {
         return 0;
     }
 
-    public int getSize(){
+    public boolean isLoaded(){
+        return true;
+    }
+
+    public List<ChestPage> getPages(){
+        return null;
+    }
+
+    public String getType(){
+        return "";
+    }
+
+    public Integer getSize(){
         return 0;
     }
+
+    public ChestTitle getChestTitle(){
+        return null;
+    }
+
+    public void setAutomaticSellsStatus(boolean status){}
+
+    public boolean getAutomaticSellsStatus(){
+        return true;
+    }
+
+    public void setMoney(double money){}
 
     public double getMoney(){
         return 0.0;
