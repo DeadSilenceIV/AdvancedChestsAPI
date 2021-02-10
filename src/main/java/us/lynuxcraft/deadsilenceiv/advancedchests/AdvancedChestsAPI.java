@@ -73,8 +73,7 @@ public class AdvancedChestsAPI {
     }
 
     /**
-     * Get the chest seller
-     * @return
+     * Get the chest seller.
      */
     public static ChestSeller getChestSeller(){ return null;}
 }
