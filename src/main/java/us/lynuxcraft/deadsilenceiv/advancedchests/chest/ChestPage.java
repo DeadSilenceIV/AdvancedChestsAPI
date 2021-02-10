@@ -10,8 +10,6 @@ public class ChestPage {
 
     public void open(Player player){}
 
-    public void reloadPage(){}
-
     public List<ItemStack> getItems(){
         return null;
     }

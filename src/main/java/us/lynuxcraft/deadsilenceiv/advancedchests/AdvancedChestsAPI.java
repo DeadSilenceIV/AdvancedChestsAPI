@@ -4,6 +4,7 @@ import org.bukkit.inventory.ItemStack;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.AdvancedChest;
 import us.lynuxcraft.deadsilenceiv.advancedchests.managers.ChestsManager;
 import us.lynuxcraft.deadsilenceiv.advancedchests.managers.DataManager;
+import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.ChestSeller;
 
 public class AdvancedChestsAPI {
 
@@ -70,4 +71,10 @@ public class AdvancedChestsAPI {
     public static ChestsManager getChestManager(){
         return null;
     }
+
+    /**
+     * Get the chest seller
+     * @return
+     */
+    public static ChestSeller getChestSeller(){ return null;}
 }

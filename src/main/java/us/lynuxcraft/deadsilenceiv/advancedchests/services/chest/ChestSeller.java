@@ -4,7 +4,7 @@ public class ChestSeller {
 
     public void setService(SellService service){}
 
-    public SellService getSellService(){
+    public SellService getService(){
         return null;
     }
 

@@ -38,6 +38,8 @@ public class AdvancedChest{
 
     public void reloadTitle(){}
 
+    public void updatePages(){}
+
     public ChestPage getPlayerPage(Player p){
         return null;
     }
@@ -107,5 +109,4 @@ public class AdvancedChest{
     public double getMoney(){
         return 0.0;
     }
-
 }
