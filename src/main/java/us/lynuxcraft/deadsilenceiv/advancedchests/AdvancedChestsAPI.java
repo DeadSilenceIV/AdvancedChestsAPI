@@ -51,6 +51,7 @@ public class AdvancedChestsAPI {
 
     /**
      * Get the last item from a chest without removing it.
+     *
      * @param chest advanced chest instance
      * @return The last item found from an advanced chest.
      */
