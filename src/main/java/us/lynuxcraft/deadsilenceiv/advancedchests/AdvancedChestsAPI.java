@@ -33,7 +33,7 @@ public class AdvancedChestsAPI {
      * Get an specific advanced chest item.
      *
      * @param chestType type of advanced chest
-     * @return The declared advanced chest item. null if the type doesn't exists
+     * @return The declared advanced chest item. null if the type doesn't exists.
      */
     public static ItemStack getAdvancedChestItem(String chestType){
         return null;

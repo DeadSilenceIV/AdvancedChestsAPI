@@ -1,6 +1,6 @@
 package us.lynuxcraft.deadsilenceiv.advancedchests.chest;
 
-import java.util.LinkedList;
+import java.util.List;
 import java.util.UUID;
 
 public class ChestBuilder {
@@ -11,7 +11,7 @@ public class ChestBuilder {
         return this;
     }
 
-    public ChestBuilder setPages(LinkedList<ChestPage> chestPages){
+    public ChestBuilder setPages(List<ChestPage> chestPages){
         return this;
     }
 
