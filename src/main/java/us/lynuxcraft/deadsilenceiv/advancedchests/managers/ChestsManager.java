@@ -4,79 +4,77 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.Inventory;
-import us.lynuxcraft.deadsilenceiv.advancedchests.chest.AdvancedChest;
+import us.lynuxcraft.deadsilenceiv.advancedchests.chest.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class ChestsManager {
-
+public class ChestsManager{
     /**
-     * Register an advanced chest.
+     * Registers an advanced chest.
      *
-     * @param chest advanced chest instance.
+     * @param chest the chest instance.
      */
     public void register(AdvancedChest chest){}
 
     /**
-     * Unregister an advanced chest.
+     * UnRegisters an specified chest.
      *
-     * @param chest advanced chest instance.
+     * @param chest the chest instance.
      */
     public void unRegister(AdvancedChest chest){}
 
     /**
-     * Save an advanced chest data.
+     * Gets an non loadable chest from a specified location.
+     * (Chests that couldn't be loaded by external factors such as bad configuration).
      *
-     * @param chest advanced chest instance.
+     * @param location the location of the chest
+     * @return the chest instance, null if there is not a chest at the location.
      */
-    public void save(AdvancedChest chest){}
-
-    /**
-     * Get an non loaded advanced chest (Chests that couldn't be loaded by external factors).
-     *
-     * @param location the non loaded advanced chest location
-     * @return the non loaded advanced chest. null if there isn't a non loaded advanced chest.
-     */
-    public AdvancedChest getNonLoadedChest(Location location){
+    public AdvancedChest getNonLoadableChest(Location location){
         return null;
     }
 
-    /**
-     * Get an advanced chest at a specific block
-     *
-     * @param block the block where the advanced chest is
-     * @return the advanced chest. null if there isn't an advanced chest.
-     */
     @Deprecated
     public AdvancedChest getAdvancedChest(Block block){
         return null;
     }
 
     /**
-     * Get an advanced chest at a specific location
+     * Gets a LOADED AdvancedChest at a specified location.
      *
-     * @param location the advanced chest location
-     * @return the advanced chest. null if there isn't an advanced chest.
+     * @param location the location instance
+     * @return the chest instance, null if there is not a chest at the location.
      */
-    public AdvancedChest getAdvancedChest(Location location){return null;}
-
-    /**
-     * Get an advanced chest by the inventory.
-     *
-     * @param inventory the inventory of the advanced chest
-     * @return the advanced chest. null if there isn't an advanced chest.
-     */
-    public AdvancedChest getAdvancedChest(Inventory inventory){
+    public AdvancedChest getAdvancedChest(Location location){
         return null;
     }
 
     /**
-     * Get a list of advanced chests in a world.
+     * Gets all the AdvancedChest in a specified world.
      *
-     * @param world the world of the advanced chests
-     * @return the list of all the advanced chests in the specified world.
+     * @param world the world instance
+     * @return a set of AdvancedChests.
      */
-    public List<AdvancedChest> getAdvancedChests(World world){ return null;}
+    public Set<AdvancedChest> getAdvancedChests(World world){
+        return null;
+    }
 
+    /**
+     * Gets all those chests that need to be completely loaded
+     * (Chests that need its entity to be loaded {@link AdvancedChest#loadEntity()})
+     *
+     * @return a set of AdvancedChests.
+     */
+    public Set<AdvancedChest> getPendingChestsToLoadCompletely(){
+        return null;
+    }
+
+    /**
+     * Gets the total of registered chests.
+     *
+     * @return the amount of chests registered.
+     */
+    public int getTotalChests(){
+        return 0;
+    }
 }
