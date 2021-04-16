@@ -6,7 +6,7 @@
 
     <groupId>us.lynuxcraft.deadsilenceiv</groupId>
     <artifactId>AdvancedChestsAPI</artifactId>
-    <version>1.5-SNAPSHOT</version>
+    <version>1.6-SNAPSHOT</version>
     <repositories>
         <repository>
             <id>spigot-repo</id>
