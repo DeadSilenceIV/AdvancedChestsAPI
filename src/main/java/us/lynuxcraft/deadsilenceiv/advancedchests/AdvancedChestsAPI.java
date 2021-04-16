@@ -26,8 +26,17 @@ public class AdvancedChestsAPI {
      * @return True if the item was added correctly, false if the item didn't have space to be added.
      */
     public static boolean addItemToChest(AdvancedChest chest, ItemStack stack){
-        return true;
+        return false;
     }
+
+    /**
+     * Checks if there is space for the item inside the advanced chest.
+     *
+     * @param chest the advanced chest instance
+     * @param stack item that is going to be checked
+     * @return true if the chest has space for the item, false otherwise.
+     */
+    public static boolean hasSpaceForItem(AdvancedChest chest,ItemStack stack){return false;}
 
     /**
      * Get an specific advanced chest item.
