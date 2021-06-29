@@ -3,7 +3,6 @@ package us.lynuxcraft.deadsilenceiv.advancedchests.managers;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
-import org.bukkit.inventory.Inventory;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.*;
 
 import java.util.*;
@@ -60,12 +59,12 @@ public class ChestsManager{
     }
 
     /**
-     * Gets all those chests that need to be completely loaded
+     * Gets all those chests that need to be loaded
      * (Chests that need its entity to be loaded {@link AdvancedChest#loadEntity()})
      *
      * @return a set of AdvancedChests.
      */
-    public Set<AdvancedChest> getPendingChestsToLoadCompletely(){
+    public Set<AdvancedChest> getPendingChestsToLoad(){
         return null;
     }
 
