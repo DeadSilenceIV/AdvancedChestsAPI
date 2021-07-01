@@ -6,6 +6,7 @@ import org.bukkit.block.Block;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.*;
 
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class ChestsManager{
     /**
@@ -64,7 +65,7 @@ public class ChestsManager{
      *
      * @return a set of AdvancedChests.
      */
-    public Set<AdvancedChest> getPendingChestsToLoad(){
+    public CopyOnWriteArraySet<AdvancedChest> getPendingChestsToLoad(){
         return null;
     }
 
