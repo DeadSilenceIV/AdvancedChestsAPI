@@ -92,11 +92,9 @@ public class AdvancedChest {
     /**
      * Compresses all the chest pages.
      *
-     * @return the compression status.
+     * @param player the player that is going to compress the chest, it can be null.
      */
-    public CompressionStatus compress(){
-        return null;
-    }
+    public void compress(Player player){}
 
     /**
      * Closes the chest's inventories for all the current viewers.
@@ -248,6 +246,15 @@ public class AdvancedChest {
      * @return true if there is a SellProcess going on, false otherwise.
      */
     public boolean isBeingSold(){
+        return false;
+    }
+
+    /**
+     * Checks if the chest is being compressed.
+     *
+     * @return true if there is a CompressProcess going on, false otherwise.
+     */
+    public boolean isBeingCompressed(){
         return false;
     }
 
