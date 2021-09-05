@@ -4,6 +4,7 @@ import org.bukkit.inventory.ItemStack;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.AdvancedChest;
 import us.lynuxcraft.deadsilenceiv.advancedchests.managers.ChestsManager;
 import us.lynuxcraft.deadsilenceiv.advancedchests.managers.DataManager;
+import us.lynuxcraft.deadsilenceiv.advancedchests.managers.InventoryManager;
 import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.ChestSeller;
 
 public class AdvancedChestsAPI {
@@ -39,17 +40,17 @@ public class AdvancedChestsAPI {
     public static boolean hasSpaceForItem(AdvancedChest chest,ItemStack stack){return false;}
 
     /**
-     * Get an specific advanced chest item.
+     * Get a specific advanced chest item.
      *
      * @param chestType type of advanced chest
-     * @return The declared advanced chest item. null if the type doesn't exists.
+     * @return The declared advanced chest item. null if the type doesn't exist.
      */
     public static ItemStack getAdvancedChestItem(String chestType){
         return null;
     }
 
     /**
-     * Get the type of an advanced chest by item.
+     * Get the type of advanced chest by item.
      *
      * @param itemStack advanced chest item
      * @return the type of advanced chest. null if the item isn't an advanced chest.
@@ -81,6 +82,11 @@ public class AdvancedChestsAPI {
     public static ChestsManager getChestManager(){
         return null;
     }
+
+    /**
+     * Gets the inventory manager.
+     */
+    public static InventoryManager getInventoryManager(){return null;}
 
     /**
      * Get the chest seller.
