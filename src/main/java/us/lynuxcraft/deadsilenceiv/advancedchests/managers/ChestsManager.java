@@ -1,12 +1,13 @@
 package us.lynuxcraft.deadsilenceiv.advancedchests.managers;
 
+import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.*;
+import us.lynuxcraft.deadsilenceiv.advancedchests.utils.ChunkLocation;
 
 import java.util.*;
-import java.util.concurrent.CopyOnWriteArraySet;
 
 public class ChestsManager{
     /**
@@ -17,14 +18,14 @@ public class ChestsManager{
     public void register(AdvancedChest chest){}
 
     /**
-     * UnRegisters an specified chest.
+     * UnRegisters a specified chest.
      *
      * @param chest the chest instance.
      */
     public void unRegister(AdvancedChest chest){}
 
     /**
-     * Gets an non loadable chest from a specified location.
+     * Gets a non-loadable chest from a specified location.
      * (Chests that couldn't be loaded by external factors such as bad configuration).
      *
      * @param location the location of the chest
@@ -60,12 +61,12 @@ public class ChestsManager{
     }
 
     /**
-     * Gets all those chests that need to be loaded
-     * (Chests that need its entity to be loaded {@link AdvancedChest#loadEntity()})
+     * Gets all the LOADED AdvancedChests at the specified chunk.
      *
-     * @return a set of AdvancedChests.
+     * @param chunk the chunk location instance
+     * @return the set of AdvancedChests, null if there isn't AdvancedChests at the chunk.
      */
-    public CopyOnWriteArraySet<AdvancedChest> getPendingChestsToLoad(){
+    public Set<AdvancedChest> getAdvancedChests(ChunkLocation chunk){
         return null;
     }
 

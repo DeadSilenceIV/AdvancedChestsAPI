@@ -1,8 +1,14 @@
 package us.lynuxcraft.deadsilenceiv.advancedchests.utils;
 
+import org.bukkit.Chunk;
+import org.bukkit.Location;
 import org.bukkit.World;
 
 public class ChunkLocation {
+
+    public ChunkLocation(Location location) {}
+
+    public ChunkLocation(Chunk chunk){}
 
     public World getWorld() {
         return null;
@@ -19,4 +25,5 @@ public class ChunkLocation {
     public boolean isLoaded(){
         return false;
     }
+
 }
