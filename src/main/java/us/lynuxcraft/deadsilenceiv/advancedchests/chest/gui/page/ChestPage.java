@@ -10,7 +10,7 @@ import java.util.List;
 public class ChestPage{
 
     /**
-     * Opens the inventory to an specified player.
+     * Opens the inventory to a specified player.
      *
      * @param player the player instance.
      */
