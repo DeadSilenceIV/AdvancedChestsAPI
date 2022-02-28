@@ -1,25 +1,34 @@
 package us.lynuxcraft.deadsilenceiv.advancedchests.chest.gui.page;
 
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.entity.HumanEntity;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.AdvancedChest;
 
 import java.util.List;
 
-public class ChestPage{
+public interface ChestPage<I>{
+
+    int getId();
+
+    void setChest(AdvancedChest<?,?> chest);
+
+    void setPreparedContent(I[] preparedContent);
 
     /**
      * Opens the inventory to a specified player.
      *
-     * @param player the player instance.
+     * @param entity the human entity instance.
      */
-    public void open(Player player){}
+    void open(HumanEntity entity);
+
+    /**
+     * Loads the inventory and the actions.
+     */
+    void setupPage();
 
     /**
      * Clears the inventory, removes the actions and re-setup the inventory.
      */
-    public void reloadPage(){}
+    void reloadPage();
 
     /**
      * Set the specified list of items into the page.
@@ -27,46 +36,21 @@ public class ChestPage{
      *
      * @param items the items that will be set into the page.
      */
-    public void setContent(List<ItemStack> items){}
-
-    /**
-     * Gets the {@link AdvancedChest} where the page belongs to.
-     *
-     * @return the owner of the page.
-     */
-    public AdvancedChest getChest(){return null;}
+    void setContent(List<I> items);
 
     /**
      * Get all the page content excluding the bottom row.
      *
      * @return an array with all the content of the page.
      */
-    public ItemStack[] getItems(){
-        return null;
-    }
+    I[] getItems();
+
     /**
      * Get all the slots excluding the bottom row slots.
      *
      * @return an array with all the content slots.
      */
-    public int[] getInputSlots(){
-        return null;
-    }
+    int[] getInputSlots();
 
-    /**
-     * Gets the bukkit inventory.
-     *
-     * @return the {@link Inventory} instance.
-     */
-    public Inventory getBukkitInventory() {
-        return null;
-    }
-
-    /**
-     * Gets the id of the page.
-     *
-     * @return the identifier of the page.
-     */
-    public int getId(){return 0;}
 }
 

@@ -16,7 +16,7 @@ public class ChestRemoveEvent{
     /**
      * Cancels the event.
      *
-     * @param b if should be cancelled or not.
+     * @param b if it should be cancelled or not.
      */
     public void setCancelled(boolean b) {}
 }

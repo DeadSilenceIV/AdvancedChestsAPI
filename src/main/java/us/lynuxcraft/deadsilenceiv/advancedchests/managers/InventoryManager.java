@@ -12,7 +12,7 @@ public class InventoryManager {
      * @param inventory the inventory instance
      * @return the chest instance, null if the inventory doesn't belong to the chest.
      */
-    public AdvancedChest getAdvancedChest(Inventory inventory){
+    public AdvancedChest<?,?> getAdvancedChest(Inventory inventory){
         return null;
     }
 

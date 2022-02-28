@@ -1,4 +1,4 @@
-package us.lynuxcraft.deadsilenceiv.advancedchests.services.chest;
+package us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.seller;
 
 public class ChestSeller {
 

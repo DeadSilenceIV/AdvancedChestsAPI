@@ -1,6 +1,5 @@
 package us.lynuxcraft.deadsilenceiv.advancedchests.managers;
 
-import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
@@ -15,14 +14,14 @@ public class ChestsManager{
      *
      * @param chest the chest instance.
      */
-    public void register(AdvancedChest chest){}
+    public void register(AdvancedChest<?,?> chest){}
 
     /**
      * UnRegisters a specified chest.
      *
      * @param chest the chest instance.
      */
-    public void unRegister(AdvancedChest chest){}
+    public void unRegister(AdvancedChest<?,?> chest){}
 
     /**
      * Gets a non-loadable chest from a specified location.
@@ -31,12 +30,12 @@ public class ChestsManager{
      * @param location the location of the chest
      * @return the chest instance, null if there is not a chest at the location.
      */
-    public AdvancedChest getNonLoadableChest(Location location){
+    public AdvancedChest<?,?> getNonLoadableChest(Location location){
         return null;
     }
 
     @Deprecated
-    public AdvancedChest getAdvancedChest(Block block){
+    public AdvancedChest<?,?> getAdvancedChest(Block block){
         return null;
     }
 
@@ -46,7 +45,7 @@ public class ChestsManager{
      * @param location the location instance
      * @return the chest instance, null if there is not a chest at the location.
      */
-    public AdvancedChest getAdvancedChest(Location location){
+    public AdvancedChest<?,?> getAdvancedChest(Location location){
         return null;
     }
 
@@ -56,7 +55,7 @@ public class ChestsManager{
      * @param world the world instance
      * @return a set of AdvancedChests.
      */
-    public Set<AdvancedChest> getAdvancedChests(World world){
+    public Set<AdvancedChest<?,?>> getAdvancedChests(World world){
         return null;
     }
 
@@ -66,7 +65,7 @@ public class ChestsManager{
      * @param chunk the chunk location instance
      * @return the set of AdvancedChests, null if there isn't AdvancedChests at the chunk.
      */
-    public Set<AdvancedChest> getAdvancedChests(ChunkLocation chunk){
+    public Set<AdvancedChest<?,?>> getAdvancedChests(ChunkLocation chunk){
         return null;
     }
 

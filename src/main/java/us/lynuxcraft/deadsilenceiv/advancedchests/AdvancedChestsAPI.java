@@ -5,7 +5,7 @@ import us.lynuxcraft.deadsilenceiv.advancedchests.chest.AdvancedChest;
 import us.lynuxcraft.deadsilenceiv.advancedchests.managers.ChestsManager;
 import us.lynuxcraft.deadsilenceiv.advancedchests.managers.DataManager;
 import us.lynuxcraft.deadsilenceiv.advancedchests.managers.InventoryManager;
-import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.ChestSeller;
+import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.seller.ChestSeller;
 
 public class AdvancedChestsAPI {
 
@@ -15,7 +15,7 @@ public class AdvancedChestsAPI {
      * @param chest advanced chest instance
      * @return The last item stack from the chest. null if there isn't any.
      */
-    public static ItemStack dispenseLastItemFromChest(AdvancedChest chest){
+    public static ItemStack dispenseLastItemFromChest(AdvancedChest<?,?> chest){
         return null;
     }
 
@@ -26,7 +26,7 @@ public class AdvancedChestsAPI {
      * @param stack item that is going to be added
      * @return True if the item was added correctly, false if the item didn't have space to be added.
      */
-    public static boolean addItemToChest(AdvancedChest chest, ItemStack stack){
+    public static boolean addItemToChest(AdvancedChest<?,?> chest, ItemStack stack){
         return false;
     }
 
@@ -37,7 +37,7 @@ public class AdvancedChestsAPI {
      * @param stack item that is going to be checked
      * @return true if the chest has space for the item, false otherwise.
      */
-    public static boolean hasSpaceForItem(AdvancedChest chest,ItemStack stack){return false;}
+    public static boolean hasSpaceForItem(AdvancedChest<?,?> chest,ItemStack stack){return false;}
 
     /**
      * Get a specific advanced chest item.
@@ -65,7 +65,7 @@ public class AdvancedChestsAPI {
      * @param chest advanced chest instance
      * @return The last item found from an advanced chest.
      */
-    public ItemStack getLastItemFromChest(AdvancedChest chest){
+    public ItemStack getLastItemFromChest(AdvancedChest<?,?> chest){
         return null;
     }
 
