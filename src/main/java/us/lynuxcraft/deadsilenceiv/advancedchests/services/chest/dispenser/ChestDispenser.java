@@ -2,7 +2,7 @@ package us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.dispenser;
 
 import org.bukkit.inventory.ItemStack;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.AdvancedChest;
-
+import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.dispenser.requests.DispenseRequest;
 
 public class ChestDispenser{
 
@@ -13,6 +13,10 @@ public class ChestDispenser{
      * @return the ItemStack(Just a single unity).
      */
     public ItemStack dispenseLastItemFromChest(AdvancedChest<?,?> chest){
+        return null;
+    }
+
+    public DispenseRequest<?> dispenseLastItemViaRequest(AdvancedChest<?,?> chest){
         return null;
     }
 
