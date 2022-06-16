@@ -1,12 +1,11 @@
 package us.lynuxcraft.deadsilenceiv.advancedchests.chest;
 
-import us.lynuxcraft.deadsilenceiv.advancedchests.chest.gui.page.BasePage;
+import us.lynuxcraft.deadsilenceiv.advancedchests.chest.gui.page.ChestPage;
 
 import java.util.Set;
 import java.util.UUID;
 
-public class ChestBuilder<I,P extends BasePage<I>,T extends BaseChest<I,P>> {
-    protected T chest;
+public interface ChestBuilder<I,P extends ChestPage<I>,T extends AdvancedChest<I,P>> {
 
     /**
      * Sets the uuid of the chest.
@@ -14,9 +13,7 @@ public class ChestBuilder<I,P extends BasePage<I>,T extends BaseChest<I,P>> {
      * @param uuid the uuid instance
      * @return the ChestBuilder.
      */
-    public ChestBuilder<I,P,T> setUUID(UUID uuid){
-        return this;
-    }
+    ChestBuilder<I,P,T> setUUID(UUID uuid);
 
     /**
      * Sets the pages of the chest.
@@ -24,9 +21,7 @@ public class ChestBuilder<I,P extends BasePage<I>,T extends BaseChest<I,P>> {
      * @param pages the uuid instance
      * @return the ChestBuilder.
      */
-    public ChestBuilder<I,P,T> setPages(Set<P> pages){
-        return this;
-    }
+    ChestBuilder<I,P,T> setPages(Set<P> pages);
 
     /**
      * Sets the amount of money of the chest.
@@ -34,9 +29,7 @@ public class ChestBuilder<I,P extends BasePage<I>,T extends BaseChest<I,P>> {
      * @param money amount of money
      * @return the ChestBuilder instance.
      */
-    public ChestBuilder<I,P,T> setMoney(Double money){
-        return this;
-    }
+    ChestBuilder<I,P,T> setMoney(Double money);
 
     /**
      * Sets the status of the automatic sells.
@@ -44,9 +37,7 @@ public class ChestBuilder<I,P extends BasePage<I>,T extends BaseChest<I,P>> {
      * @param status the status of the sells
      * @return the ChestBuilder instance.
      */
-    public ChestBuilder<I,P,T> setAutomaticSellsStatus(boolean status){
-        return this;
-    }
+    ChestBuilder<I,P,T> setAutomaticSellsStatus(boolean status);
 
     /**
      * Sets the owner of the automatic sells last session.
@@ -54,17 +45,13 @@ public class ChestBuilder<I,P extends BasePage<I>,T extends BaseChest<I,P>> {
      * @param owner the owner of the last session
      * @return the ChestBuilder instance.
      */
-    public ChestBuilder<I,P,T> setAutomaticSellsSessionOwner(UUID owner){
-        return this;
-    }
+    ChestBuilder<I,P,T> setAutomaticSellsSessionOwner(UUID owner);
 
     /**
      * Builds the AdvancedChest.
      *
      * @return the AdvancedChest instance.
      */
-    public T build(){
-        return null;
-    }
+    T build();
 
 }

@@ -3,6 +3,10 @@ package us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.dispenser.sess
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.AdvancedChest;
 import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.dispenser.sessions.requests.DispenseRequest;
 
+
 public abstract class DispenseSession<C extends AdvancedChest<?,?>,D extends DispenseRequest<?>> implements Iterable<D>{
-    public DispenseSession(C chest) {}
+    protected C chest;
+    public DispenseSession(C chest) {
+        this.chest = chest;
+    }
 }

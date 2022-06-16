@@ -2,10 +2,11 @@ package us.lynuxcraft.deadsilenceiv.advancedchests.chest.gui.page;
 
 import org.bukkit.entity.HumanEntity;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.AdvancedChest;
+import us.lynuxcraft.deadsilenceiv.advancedchests.chest.gui.ChestInventory;
 
 import java.util.List;
 
-public interface ChestPage<I>{
+public interface ChestPage<I> extends ChestInventory{
 
     int getId();
 
@@ -50,7 +51,12 @@ public interface ChestPage<I>{
      *
      * @return an array with all the content slots.
      */
-    int[] getInputSlots();
+    default int[] getInputSlots(){
+        int totalSize = getBukkitInventory().getSize()-9;
+        int[] slots = new int[totalSize];
+        for(int i = 0; i <= slots.length-1;i++)slots[i] = i;
+        return slots;
+    }
 
 }
 

@@ -4,24 +4,45 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.*;
+
 import us.lynuxcraft.deadsilenceiv.advancedchests.utils.ChunkLocation;
 
 import java.util.*;
 
-public class ChestsManager{
+public interface ChestsManager{
+
+    Set<AdvancedChest<?,?>> getChests();
+
+    Set<AdvancedChest<?,?>> getNonLoadableChests();
+
+    ChestStorage getStorage();
+
     /**
      * Registers an advanced chest.
      *
      * @param chest the chest instance.
      */
-    public void register(AdvancedChest<?,?> chest){}
+     void register(AdvancedChest<?,?> chest);
 
     /**
-     * UnRegisters a specified chest.
+     * Remove a specified chest.
      *
      * @param chest the chest instance.
      */
-    public void unRegister(AdvancedChest<?,?> chest){}
+    void unRegister(AdvancedChest<?,?> chest);
+
+    /**
+     * Setups all the chests from the storage.
+     */
+    void load();
+
+
+    /**
+     * Setups an AdvancedChest by the specified uuid and its status.
+     *
+     * @param uuid the uuid of the chest.
+     */
+    void setupChest(UUID uuid);
 
     /**
      * Gets a non-loadable chest from a specified location.
@@ -30,14 +51,10 @@ public class ChestsManager{
      * @param location the location of the chest
      * @return the chest instance, null if there is not a chest at the location.
      */
-    public AdvancedChest<?,?> getNonLoadableChest(Location location){
-        return null;
-    }
+    AdvancedChest<?,?> getNonLoadableChest(Location location);
 
     @Deprecated
-    public AdvancedChest<?,?> getAdvancedChest(Block block){
-        return null;
-    }
+    AdvancedChest<?,?> getAdvancedChest(Block block);
 
     /**
      * Gets a LOADED AdvancedChest at a specified location.
@@ -45,19 +62,7 @@ public class ChestsManager{
      * @param location the location instance
      * @return the chest instance, null if there is not a chest at the location.
      */
-    public AdvancedChest<?,?> getAdvancedChest(Location location){
-        return null;
-    }
-
-    /**
-     * Gets all the AdvancedChest in a specified world.
-     *
-     * @param world the world instance
-     * @return a set of AdvancedChests.
-     */
-    public Set<AdvancedChest<?,?>> getAdvancedChests(World world){
-        return null;
-    }
+    AdvancedChest<?,?> getAdvancedChest(Location location);
 
     /**
      * Gets all the LOADED AdvancedChests at the specified chunk.
@@ -65,16 +70,21 @@ public class ChestsManager{
      * @param chunk the chunk location instance
      * @return the set of AdvancedChests, null if there isn't AdvancedChests at the chunk.
      */
-    public Set<AdvancedChest<?,?>> getAdvancedChests(ChunkLocation chunk){
-        return null;
-    }
+    Set<AdvancedChest<?,?>> getAdvancedChests(ChunkLocation chunk);
+
+    /**
+     * Gets all the AdvancedChest in a specified world.
+     *
+     * @param world the world instance
+     * @return a set of AdvancedChests.
+     */
+    Set<AdvancedChest<?,?>> getAdvancedChests(World world);
 
     /**
      * Gets the total of registered chests.
      *
      * @return the amount of chests registered.
      */
-    public int getTotalChests(){
-        return 0;
-    }
+    int getTotalChests();
+
 }

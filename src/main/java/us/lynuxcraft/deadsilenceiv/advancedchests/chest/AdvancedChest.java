@@ -2,16 +2,15 @@ package us.lynuxcraft.deadsilenceiv.advancedchests.chest;
 
 import org.bukkit.Location;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.HumanEntity;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.jetbrains.annotations.Nullable;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.gui.page.ChestPage;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.title.ChestTitle;
-import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.SellType;
-import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.SortStatus;
-import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.SortType;
+import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.*;
+import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.sorter.SortType;
 import us.lynuxcraft.deadsilenceiv.advancedchests.utils.ChunkLocation;
+import us.lynuxcraft.deadsilenceiv.advancedchests.utils.inventory.InteractiveInventory;
 
 import java.util.*;
 
@@ -40,6 +39,8 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
     double getMoney();
 
     void setMoney(double money);
+
+    Set<InteractiveInventory> getSubInventories();
 
     ChunkLocation getChunkLocation();
 
@@ -91,7 +92,7 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
      * @param player the player that triggered the removing action, it can be null
      * @param dropItems drop items or not.
      */
-    void remove(BlockBreakEvent event, Player player,boolean dropItems);
+    void remove(@Nullable BlockBreakEvent event,@Nullable Player player,boolean dropItems);
 
     /**
      * Handles an explosion.
@@ -99,7 +100,7 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
      * @param blocks the list of exploded blocks
      * @param entity the entity that caused the explosion, it can be null.
      */
-    void handleExplosion(List<Block> blocks, Entity entity);
+    void handleExplosion(List<Block> blocks, @Nullable Entity entity);
 
     /**
      * Sorts all the pages of the chest.
@@ -110,12 +111,12 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
     SortStatus sort(SortType sortType);
 
     /**
-     * Creates a sell process to sell all the chest pages.
+     * Creates a {@link SellProcess} to sell all the chest pages.
      *
      * @param player the player that will sell the chest, it can be null
      * @param sellType the type sell.
      */
-    void sell(Player player, SellType sellType);
+    void sell(@Nullable Player player,SellType sellType);
 
     /**
      * Smelts all the chest pages.
@@ -129,12 +130,17 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
      *
      * @param player the player that is going to compress the chest, it can be null.
      */
-    void compress(Player player);
+    void compress(@Nullable Player player);
 
     /**
      * Closes the chest's inventories for all the current viewers.
      */
-    void closeForViewers();
+    default void closeForViewers(){
+        for(T page : getPages())page.closeForViewers();
+        for (InteractiveInventory subInventory : getSubInventories()) {
+            subInventory.closeForViewers();
+        }
+    }
 
     /**
      * Saves the chest into the storage folder.
@@ -147,7 +153,15 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
      * @param player the player instance
      * @return the ChestPage instance, null if the player is not looking any page of the chest.
      */
-    T getPlayerPage(Player player);
+    default T getPlayerPage(Player player){
+        for(T page : getPages()){
+            for (HumanEntity humanEntity : page.getBukkitInventory().getViewers()){
+                Player viewer = (Player) humanEntity;
+                if(player.equals(viewer)) return page;
+            }
+        }
+        return null;
+    }
 
     /**
      * Gets the ChestPage by the specified id.
@@ -155,7 +169,12 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
      * @param id the id of the page
      * @return the ChestPage, null if the id is not valid.
      */
-    T getPageById(int id);
+    default T getPageById(int id){
+        for (T page : getPages()) {
+            if(page.getId() == id)return page;
+        }
+        return null;
+    }
 
     /**
      * Gets an array of the chest pages in order by the {@link ChestPage#getId()}.
@@ -164,7 +183,13 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
      */
     T[] getOrderedPages();
 
-    List<I> getAllContent();
+    default List<I> getAllContent(){
+        List<I> content = new ArrayList<>();
+        for (T page : getPages()) {
+            content.addAll(Arrays.asList(page.getItems()));
+        }
+        return content;
+    }
 
     /**
      * Gets the location of the chest.
@@ -198,16 +223,23 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
     boolean isPlayerChangingPage(Player player);
 
     /**
+     * Gets the sub inventory by name.
+     *
+     * @return the instance of the specified sub inventory, null if not exists.
+     */
+    InteractiveInventory getSubInventoryByName(String name);
+
+    /**
      * Checks if the chest is being sold.
      *
-     * @return true if there is a sell process going on, false otherwise.
+     * @return true if there is a {@link SellProcess} going on, false otherwise.
      */
     boolean isBeingSold();
 
     /**
      * Checks if the chest is being compressed.
      *
-     * @return true if there is a compress process going on, false otherwise.
+     * @return true if there is a {@link CompressProcess} going on, false otherwise.
      */
     boolean isBeingCompressed();
 
@@ -217,6 +249,5 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
      * @return true if the chest can be loaded, false otherwise.
      */
     boolean canBeLoaded();
-
 
 }

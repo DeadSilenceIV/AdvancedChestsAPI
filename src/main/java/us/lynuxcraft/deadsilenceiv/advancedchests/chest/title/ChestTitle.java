@@ -1,53 +1,63 @@
 package us.lynuxcraft.deadsilenceiv.advancedchests.chest.title;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.bukkit.ChatColor;
+import us.lynuxcraft.deadsilenceiv.advancedchests.chest.AdvancedChest;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ChestTitle {
+    @Getter @Setter public List<String> content;
+    @Getter public boolean usingRefreshablePlaceholders;
+    protected AdvancedChest<?,?> chest;
+    private int ticks;
+    public ChestTitle(AdvancedChest<?,?> chest, List<String> content) {
+        this.chest = chest;
+        this.ticks = 0;
+        this.usingRefreshablePlaceholders = false;
+        this.content = content;
+    }
 
-    /**
-     * Spawns the entity.
-     */
     public abstract void spawn();
 
-    /**
-     * Deletes the entity.
-     */
     public abstract void delete();
 
-    /**
-     * Updates the content.
-     */
     public abstract void update();
 
-    /**
-     * Increases an internal counter to refresh the title
-     * This method can be used mainly for hopper movement.
-     */
-    public void tickByHopper(){}
-
-    /**
-     * Checks if the content of the holograms has placeholders.
-     *
-     * @return true if has placeholders, false otherwise.
-     */
-    public boolean isUsingRefreshablePlaceholders(){
-        return true;
+    public void tickByHopper(){
+        ticks++;
+        if(ticks == 32){
+            ticks = 0;
+            update();
+        }
     }
 
     /**
-     * Gets the content of the hologram.
+     * Replaces the placeholders from the hologram content.
      *
-     * @return the content.
+     * @return a list the replaced placeholders in the content.
      */
-    public List<String> getContent(){
-        return null;
+    protected List<String> getReplacedPlaceholders(){
+        List<String> replacedHolders = new ArrayList<>();
+        if(content != null && !content.isEmpty()) {
+            for (int i = 0; i <= content.size() - 1; i++) {
+                String line = ChatColor.translateAlternateColorCodes('&', content.get(i));
+                if (line.contains("%size%")) {
+                    line = line.replaceAll("%size%", ""+chest.getSize());
+                }
+                if (line.contains("%slots_used%")) {
+                    usingRefreshablePlaceholders = true;
+                    line = line.replaceAll("%slots_used%", ""+chest.getSlotsUsed());
+                }
+                if (line.contains("%slots_left%")) {
+                    usingRefreshablePlaceholders = true;
+                    line = line.replaceAll("%slots_left%", ""+chest.getSlotsLeft());
+                }
+                replacedHolders.add(line);
+            }
+        }
+        return replacedHolders;
     }
-
-    /**
-     * Sets the content of the hologram.
-     *
-     * @param title the new content.
-     */
-    public void setContent(List<String> title){}
-
 }
