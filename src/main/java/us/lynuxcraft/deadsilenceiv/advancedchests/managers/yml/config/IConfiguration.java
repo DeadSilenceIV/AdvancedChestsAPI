@@ -1,7 +1,6 @@
 package us.lynuxcraft.deadsilenceiv.advancedchests.managers.yml.config;
 
 import org.bukkit.event.EventPriority;
-import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.WorthProvider;
 import us.lynuxcraft.deadsilenceiv.advancedchests.services.economy.PluginEconomy;
 
 import java.util.*;
@@ -9,13 +8,6 @@ import java.util.*;
 public interface IConfiguration {
 
     Map<String,Map<String,Object>> getOptions();
-
-    /**
-     * Gets the WorthProvider specified at the config.
-     *
-     * @return the WorthProvider instance.
-     */
-    WorthProvider getWorthProvider();
 
     /**
      * Gets the shop for the WorthProvider.
