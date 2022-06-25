@@ -6,11 +6,14 @@ import us.lynuxcraft.deadsilenceiv.advancedchests.managers.ChestsManager;
 import us.lynuxcraft.deadsilenceiv.advancedchests.managers.DataManager;
 import us.lynuxcraft.deadsilenceiv.advancedchests.managers.InventoryManager;
 import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.ChestsProvider;
+import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.dispenser.ChestDispenser;
 import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.sells.ChestSeller;
 
 public class AdvancedChestsAPI {
 
     private static AdvancedChests instance;
+
+    private static ChestDispenser dispenser;
 
     /**
      * Gets a specific advanced chest item.
@@ -55,6 +58,14 @@ public class AdvancedChestsAPI {
      */
     public static ChestSeller getChestSeller(){
         return instance.getChestSeller();
+    }
+
+    @Deprecated
+    public static ChestDispenser getChestDispenser(){
+        if(dispenser == null){
+            dispenser = new ChestDispenser();
+        }
+        return dispenser;
     }
 
     public static void setInstance(AdvancedChests inst){
