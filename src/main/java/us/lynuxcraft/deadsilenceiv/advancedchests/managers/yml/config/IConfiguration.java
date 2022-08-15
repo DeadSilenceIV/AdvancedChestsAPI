@@ -67,6 +67,14 @@ public interface IConfiguration {
     boolean isCompressConfirmation();
 
     /**
+     * Checks if the decorative glass panels should be used
+     * on the plugin's GUIS.
+     *
+     * @return true if they should be used, false otherwise
+     */
+    boolean getGuiUseGlassPanels();
+
+    /**
      * Gets the color of the background of the break confirmation.
      *
      * @return the color of the background.
