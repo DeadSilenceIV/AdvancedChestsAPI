@@ -28,6 +28,10 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
 
     ChestTitle getChestTitle();
 
+    UUID getWhoPlaced();
+
+    void setWhoPlaced(UUID uuid);
+
     boolean isAutomaticSellsStatus();
 
     void setAutomaticSellsStatus(boolean status);

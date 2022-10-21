@@ -48,6 +48,14 @@ public interface ChestBuilder<I,P extends ChestPage<I>,T extends AdvancedChest<I
     ChestBuilder<I,P,T> setAutomaticSellsSessionOwner(UUID owner);
 
     /**
+     * Sets the uuid of the player who placed the chest.
+     *
+     * @param uuid the player who placed the chest.
+     * @return the ChestBuilder instance.
+     */
+    ChestBuilder<I,P,T> setWhoPlaced(UUID uuid);
+
+    /**
      * Builds the AdvancedChest.
      *
      * @return the AdvancedChest instance.

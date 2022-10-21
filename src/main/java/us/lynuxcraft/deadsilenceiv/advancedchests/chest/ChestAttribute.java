@@ -13,6 +13,7 @@ public enum ChestAttribute {
     LOCATION(null,null,null),
     PAGES(null,null,null),
     CONFIG_TYPE(null,null,null),
+    WHO_PLACED(null,null,null),
     CHEST_TYPE("chest-type","NORMAL",null),
     PREVIOUS_PAGE_SLOT("previous-page-slot",4,Integer.class),
     NEXT_PAGE_SLOT("next-page-slot",6,Integer.class),
