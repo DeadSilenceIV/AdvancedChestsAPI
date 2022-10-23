@@ -2,9 +2,11 @@ package us.lynuxcraft.deadsilenceiv.advancedchests.chest;
 
 import org.bukkit.Location;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.entity.*;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.jetbrains.annotations.Nullable;
+import us.lynuxcraft.deadsilenceiv.advancedchests.chest.containers.Container;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.gui.page.ChestPage;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.title.ChestTitle;
 import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.*;
@@ -23,6 +25,8 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
     String getConfigType();
 
     ChestType getChestType();
+
+    Container getContainer();
 
     Integer getSize();
 
@@ -80,9 +84,15 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
     /**
      * Upgrades the chest to an existing chest type.
      *
-     * @param upgrade the new chest type.
+     * @param upgrade the new chest type
+     * @param player player that upgraded the chest.
      */
-    void upgrade(String upgrade);
+    void upgrade(String upgrade,@Nullable Player player);
+
+    @Deprecated
+    default void upgrade(String upgrade){
+        upgrade(upgrade,null);
+    }
 
     /**
      * Updates all the pages.
@@ -201,6 +211,13 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
      * @return the location instance, null if is an invalid location.
      */
      Location getLocation();
+
+    /**
+     * Gets the direction of the chest.
+     *
+     * @return the block face instance.
+     */
+    BlockFace getDirection();
 
     /**
      * Gets the amount of slots that are occupied.

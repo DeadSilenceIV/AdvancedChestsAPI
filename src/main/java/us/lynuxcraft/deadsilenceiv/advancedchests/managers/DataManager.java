@@ -105,7 +105,7 @@ public interface DataManager {
     boolean areSellsAvailable(String chest);
 
     /**
-     * Use this method to know the sells multiplier of
+     * Use this method to know the sells' multiplier of
      * a certain type of advanced chest.
      *
      * @param chest the advanced chest type
@@ -301,7 +301,7 @@ public interface DataManager {
 
     /**
      * Use this method to know if a specified type of advanced chest
-     * is non loadable.
+     * is non-loadable.
      *
      * @param chest the advanced chest type
      * @return true if is non loaded, false if isn't.

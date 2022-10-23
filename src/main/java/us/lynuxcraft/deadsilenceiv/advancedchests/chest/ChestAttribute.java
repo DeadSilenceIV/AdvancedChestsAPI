@@ -14,6 +14,7 @@ public enum ChestAttribute {
     PAGES(null,null,null),
     CONFIG_TYPE(null,null,null),
     WHO_PLACED(null,null,null),
+    DIRECTION(null,null,null),
     CHEST_TYPE("chest-type","NORMAL",null),
     PREVIOUS_PAGE_SLOT("previous-page-slot",4,Integer.class),
     NEXT_PAGE_SLOT("next-page-slot",6,Integer.class),
@@ -47,7 +48,8 @@ public enum ChestAttribute {
     COMPRESSOR_AVAILABILITY("compressor.enable",false,Boolean.class),
     COMPRESSOR_PRICE("compressor.price",0.0,Double.class),
     COMPRESSOR_SLOT("compressor.slot",7,Integer.class),
-    DEPOSIT_AVAILABILITY("deposit.enable",false,Boolean.class);
+    DEPOSIT_AVAILABILITY("deposit.enable",false,Boolean.class),
+    CONTAINER_TYPE("container.type","CHEST",null);
     @Getter private String configPath;
     @Getter private Object defaultConfigValue;
     @Getter private Class configValueClass;

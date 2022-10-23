@@ -1,5 +1,7 @@
 package us.lynuxcraft.deadsilenceiv.advancedchests.chest;
 
+import org.bukkit.block.BlockFace;
+import us.lynuxcraft.deadsilenceiv.advancedchests.chest.containers.Container;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.gui.page.ChestPage;
 
 import java.util.Set;
@@ -54,6 +56,22 @@ public interface ChestBuilder<I,P extends ChestPage<I>,T extends AdvancedChest<I
      * @return the ChestBuilder instance.
      */
     ChestBuilder<I,P,T> setWhoPlaced(UUID uuid);
+
+    /**
+     * Sets the container of the chest.
+     *
+     * @param container the container instance.
+     * @return the ChestBuilder instance.
+     */
+    ChestBuilder<I,P,T> setContainer(Container container);
+
+    /**
+     * Sets the block face direction
+     *
+     * @param blockFace the direction of the block.
+     * @return the ChestBuilder instance.
+     */
+    ChestBuilder<I,P,T> setDirection(BlockFace blockFace);
 
     /**
      * Builds the AdvancedChest.
