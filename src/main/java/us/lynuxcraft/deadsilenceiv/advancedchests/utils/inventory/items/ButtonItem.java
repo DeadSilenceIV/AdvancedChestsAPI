@@ -1,6 +1,6 @@
 package us.lynuxcraft.deadsilenceiv.advancedchests.utils.inventory.items;
 
-import us.lynuxcraft.deadsilenceiv.advancedchests.utils.Placeholder;
+import us.lynuxcraft.deadsilenceiv.advancedchests.utils.ItemPlaceHolder;
 
 import java.util.Set;
 
@@ -8,8 +8,8 @@ public interface ButtonItem extends InteractiveItem{
 
     String getName();
 
-    Set<Placeholder> getPlaceholders();
+    Set<ItemPlaceHolder> getPlaceholders();
 
-    void addPlaceholder(Placeholder placeholder);
+    void addPlaceholder(ItemPlaceHolder placeholder);
 
 }

@@ -15,7 +15,7 @@ import us.lynuxcraft.deadsilenceiv.advancedchests.utils.inventory.items.ButtonIt
 public class ChestButton<T extends ButtonItem> extends BaseButton<T>{
     protected AdvancedChests plugin;
     protected DataManager dataManager;
-    protected LanguagesManager languagesManager;
+    protected LanguagesManager languages;
     protected InventoryManager inventoryManager;
     protected TaskManager taskManager;
     protected IConfiguration config;
@@ -24,7 +24,7 @@ public class ChestButton<T extends ButtonItem> extends BaseButton<T>{
         super(name);
         plugin = AdvancedChestsAPI.getInstance();
         dataManager = plugin.getDataManager();
-        languagesManager = plugin.getLanguagesManager();
+        languages = plugin.getLanguagesManager();
         inventoryManager = plugin.getInventoryManager();
         taskManager = plugin.getTaskManager();
         config = plugin.getConfiguration();

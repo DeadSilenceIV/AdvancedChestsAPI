@@ -13,6 +13,7 @@ public class LanguagesManager {
     @Getter private String prefix;
     @Getter private String upgradesOnSuccess;
     @Getter private String upgradesOnFail;
+    @Getter private String upgradesNewChestContainerForbiddenLocation;
     @Getter private String sortsOnFail;
     @Getter private String sortsAnythingToSort;
     @Getter private String sortsAlreadySorted;
@@ -46,6 +47,9 @@ public class LanguagesManager {
     @Getter private Integer guiUpgradeIconCustomModelData;
     @Getter private String guiInfiniteItemIconName;
     @Getter private List<String> guiInfiniteItemIconLore;
+    @Getter private String guiInfiniteItemIconPlaceholdersItemLoreTitle;
+    @Getter private String guiInfiniteItemIconPlaceholdersItemLoreSubTitle;
+    @Getter private String guiInfiniteItemIconPlaceholdersItemLoreLine;
     @Getter private String deleteConfirmationInvName;
     @Getter private Material deleteConfirmationIconMaterial;
     @Getter private String deleteConfirmationIconName;
@@ -197,6 +201,7 @@ public class LanguagesManager {
         prefix = languages.getString("prefix","&8[&e&lAdvanced&6&lChests&8]");
         upgradesOnSuccess = languages.getString("upgrades.success","&aThe chest was upgraded correctly&6!");
         upgradesOnFail = languages.getString("upgrades.fail","&cYou do not have enough money to buy this upgrade&6!");
+        upgradesNewChestContainerForbiddenLocation = languages.getString("upgrades.new-chest-container-forbidden-location","&cThe new type of container can not have chests around.");
         sortsOnFail = languages.getString("sorts.fail","&cYou do not have enough money to do this!");
         sortsAnythingToSort = languages.getString("sorts.anything-to-sort","&cThere is anything to sort in this chest!");
         sortsAlreadySorted = languages.getString("sorts.already-sorted","&cThis chest is already sorted!");
@@ -250,6 +255,9 @@ public class LanguagesManager {
 
         guiInfiniteItemIconName = languages.getString("gui.infiniteitemicon.name","%item-name%");
         guiInfiniteItemIconLore = languages.getStringList("gui.infiniteitemicon.lore");
+        guiInfiniteItemIconPlaceholdersItemLoreTitle = languages.getString("gui.infiniteitemicon.placeholders.item-lore.title");
+        guiInfiniteItemIconPlaceholdersItemLoreSubTitle = languages.getString("gui.infiniteitemicon.placeholders.item-lore.subtitle");
+        guiInfiniteItemIconPlaceholdersItemLoreLine = languages.getString("gui.infiniteitemicon.placeholders.item-lore.line","%line%");
 
         deleteConfirmationInvName = languages.getString("gui.break-confirmation.inventoryname","&c&lRemove the Chest...");
         deleteConfirmationIconMaterial = fetchMaterial("gui.break-confirmation.confirmicon.material",XMaterial.BARRIER.parseMaterial());

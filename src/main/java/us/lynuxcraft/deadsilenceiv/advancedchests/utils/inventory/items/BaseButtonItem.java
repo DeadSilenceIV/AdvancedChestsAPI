@@ -4,7 +4,7 @@ import lombok.Getter;
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import us.lynuxcraft.deadsilenceiv.advancedchests.utils.Placeholder;
+import us.lynuxcraft.deadsilenceiv.advancedchests.utils.ItemPlaceHolder;
 import us.lynuxcraft.deadsilenceiv.advancedchests.utils.inventory.Button;
 
 import java.util.*;
@@ -13,7 +13,7 @@ public class BaseButtonItem<T extends Button<? extends ButtonItem>> implements B
     @Getter protected final T button;
     @Getter protected final String name;
     @Getter protected final ItemStack itemStack;
-    @Getter protected final Set<Placeholder> placeholders;
+    @Getter protected final Set<ItemPlaceHolder> placeholders;
     protected final ItemMeta originalMeta;
     private Optional<String> cachedOriginalName;
     private List<String> cachedOriginalLore;
@@ -28,7 +28,7 @@ public class BaseButtonItem<T extends Button<? extends ButtonItem>> implements B
     }
 
     @Override
-    public void addPlaceholder(Placeholder placeholder) {
+    public void addPlaceholder(ItemPlaceHolder placeholder) {
         placeholders.add(placeholder);
     }
 
@@ -37,10 +37,11 @@ public class BaseButtonItem<T extends Button<? extends ButtonItem>> implements B
         if(originalName == null)return;
         String name = ""+originalName;
         if(name.isEmpty())return;
-        for (Placeholder holder : placeholders) {
+        for (ItemPlaceHolder holder : placeholders) {
             String placeholder = holder.getSequence();
-            if(name.contains(placeholder)){
-                name = name.replaceAll(placeholder, ChatColor.translateAlternateColorCodes('&',holder.getReplacement()));
+            String replacement = holder.getReplacement();
+            if(holder.isApplicableForName() && replacement != null && name.contains(placeholder)){
+                name = name.replaceAll(placeholder, ChatColor.translateAlternateColorCodes('&',replacement));
             }
         }
         meta.setDisplayName(name);
@@ -53,13 +54,26 @@ public class BaseButtonItem<T extends Button<? extends ButtonItem>> implements B
         if(lore.isEmpty())return;
         for (int i = 0; i < lore.size(); i++) {
             String line = lore.get(i);
-            for (Placeholder holder : placeholders) {
+            for (ItemPlaceHolder holder : placeholders) {
                 String placeholder = holder.getSequence();
-                if (line.contains(placeholder)) {
-                    line = line.replaceAll(placeholder, ChatColor.translateAlternateColorCodes('&',holder.getReplacement()));
+                String replacement = holder.getReplacement();
+                if (holder.isApplicableForLore() && line.contains(placeholder)) {
+                    if(replacement == null){
+                        lore.remove(i);
+                        i--;
+                        continue;
+                    }
+                    String[] splitReplacement = replacement.split("\n");
+                    for (int j = 0; j < splitReplacement.length; j++) {
+                        if(j != 0){
+                            i++;
+                            lore.add(i,ChatColor.translateAlternateColorCodes('&',splitReplacement[j]));
+                        }else{
+                            lore.set(i,ChatColor.translateAlternateColorCodes('&',line.replaceAll(placeholder,splitReplacement[j])));
+                        }
+                    }
                 }
             }
-            lore.set(i, line);
         }
         meta.setLore(lore);
     }
