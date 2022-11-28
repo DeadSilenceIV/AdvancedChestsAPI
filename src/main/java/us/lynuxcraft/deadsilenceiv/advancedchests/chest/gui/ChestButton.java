@@ -1,7 +1,6 @@
 package us.lynuxcraft.deadsilenceiv.advancedchests.chest.gui;
 
 import net.milkbowl.vault.economy.Economy;
-
 import us.lynuxcraft.deadsilenceiv.advancedchests.AdvancedChests;
 import us.lynuxcraft.deadsilenceiv.advancedchests.AdvancedChestsAPI;
 import us.lynuxcraft.deadsilenceiv.advancedchests.managers.DataManager;

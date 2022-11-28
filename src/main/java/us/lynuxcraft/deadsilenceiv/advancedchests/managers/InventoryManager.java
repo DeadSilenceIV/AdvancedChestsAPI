@@ -8,7 +8,8 @@ import us.lynuxcraft.deadsilenceiv.advancedchests.chest.gui.ChestInventory;
 import us.lynuxcraft.deadsilenceiv.advancedchests.shop.IShop;
 import us.lynuxcraft.deadsilenceiv.advancedchests.utils.inventory.InteractiveInventory;
 
-import java.util.*;
+import java.util.Map;
+import java.util.Optional;
 
 public interface InventoryManager{
 

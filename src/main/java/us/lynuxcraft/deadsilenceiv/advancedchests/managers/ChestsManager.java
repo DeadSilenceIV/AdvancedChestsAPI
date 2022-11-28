@@ -3,11 +3,11 @@ package us.lynuxcraft.deadsilenceiv.advancedchests.managers;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
-import us.lynuxcraft.deadsilenceiv.advancedchests.chest.*;
-
+import us.lynuxcraft.deadsilenceiv.advancedchests.chest.AdvancedChest;
 import us.lynuxcraft.deadsilenceiv.advancedchests.utils.ChunkLocation;
 
-import java.util.*;
+import java.util.Set;
+import java.util.UUID;
 
 public interface ChestsManager{
 

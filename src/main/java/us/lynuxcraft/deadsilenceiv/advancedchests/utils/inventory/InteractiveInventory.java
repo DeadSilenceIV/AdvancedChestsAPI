@@ -9,7 +9,9 @@ import org.bukkit.inventory.ItemStack;
 import us.lynuxcraft.deadsilenceiv.advancedchests.utils.inventory.actions.*;
 import us.lynuxcraft.deadsilenceiv.advancedchests.utils.inventory.items.ButtonItem;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public interface InteractiveInventory {

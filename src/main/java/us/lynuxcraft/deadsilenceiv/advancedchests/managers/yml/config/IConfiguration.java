@@ -3,7 +3,7 @@ package us.lynuxcraft.deadsilenceiv.advancedchests.managers.yml.config;
 import org.bukkit.event.EventPriority;
 import us.lynuxcraft.deadsilenceiv.advancedchests.services.economy.PluginEconomy;
 
-import java.util.*;
+import java.util.Map;
 
 public interface IConfiguration {
 

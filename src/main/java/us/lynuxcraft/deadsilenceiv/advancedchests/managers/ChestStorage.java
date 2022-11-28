@@ -4,7 +4,6 @@ import us.lynuxcraft.deadsilenceiv.advancedchests.chest.AdvancedChest;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.ChestAttribute;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.gui.page.ChestPage;
 
-
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
