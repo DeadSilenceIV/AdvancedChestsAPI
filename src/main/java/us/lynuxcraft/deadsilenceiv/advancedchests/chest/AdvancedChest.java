@@ -23,7 +23,7 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
 
     UUID getUniqueId();
 
-    Set<T> getPages();
+    Map<Integer,T> getPages();
 
     String getConfigType();
 
@@ -153,7 +153,9 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
      * Closes the chest's inventories for all the current viewers.
      */
     default void closeForViewers(){
-        for(T page : getPages())page.closeForViewers();
+        for(T page : getPages().values()){
+            page.closeForViewers();
+        }
         for (InteractiveInventory subInventory : getSubInventories()) {
             subInventory.closeForViewers();
         }
@@ -171,7 +173,7 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
      * @return the ChestPage instance, null if the player is not looking any page of the chest.
      */
     default T getPlayerPage(Player player){
-        for(T page : getPages()){
+        for(T page : getPages().values()){
             for (HumanEntity humanEntity : page.getBukkitInventory().getViewers()){
                 Player viewer = (Player) humanEntity;
                 if(player.equals(viewer)) return page;
@@ -187,10 +189,7 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
      * @return the ChestPage, null if the id is not valid.
      */
     default T getPageById(int id){
-        for (T page : getPages()) {
-            if(page.getId() == id)return page;
-        }
-        return null;
+        return getPages().get(id);
     }
 
     /**
@@ -202,7 +201,7 @@ public interface AdvancedChest<I,T extends ChestPage<I>> {
 
     default List<I> getAllContent(){
         List<I> content = new ArrayList<>();
-        for (T page : getPages()) {
+        for (T page : getPages().values()) {
             content.addAll(Arrays.asList(page.getItems()));
         }
         return content;

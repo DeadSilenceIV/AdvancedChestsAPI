@@ -69,13 +69,13 @@ public interface ChestStorage{
      * @param pages the set of chest pages
      * @return the ordered array of pages.
      */
-    default ChestPage<?>[] orderPages(Set<ChestPage<?>> pages){
+    default ChestPage<?>[] orderPages(Map<Integer,ChestPage<?>> pages){
         ChestPage<?>[] orderedPages = new ChestPage[pages.size()];
         for (int i = 0; i < pages.size(); i++) {
-            for (ChestPage<?> page : pages) {
-                if(page.getId() == i)orderedPages[i] = page;
-            }
+            ChestPage<?> page = pages.get(i);
+            orderedPages[i] = page;
         }
         return orderedPages;
     }
+
 }

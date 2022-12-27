@@ -2,7 +2,7 @@ package us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.storage.mysql;
 
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.gui.page.ChestPage;
 
-import java.util.Set;
+import java.util.Map;
 
 public interface MysqlService{
 
@@ -19,6 +19,6 @@ public interface MysqlService{
      *
      * @return the set of de-serialized pages.
      */
-    Set<ChestPage<?>> deserializePages(byte[] serializedPages, int totalChestSize);
+    Map<Integer,ChestPage<?>> deserializePages(byte[] serializedPages, int totalChestSize);
 
 }
