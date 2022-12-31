@@ -4,7 +4,7 @@ import org.bukkit.block.BlockFace;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.containers.Container;
 import us.lynuxcraft.deadsilenceiv.advancedchests.chest.gui.page.ChestPage;
 
-import java.util.Set;
+import java.util.Map;
 import java.util.UUID;
 
 public interface ChestBuilder<I,P extends ChestPage<I>,T extends AdvancedChest<I,P>> {
@@ -23,7 +23,7 @@ public interface ChestBuilder<I,P extends ChestPage<I>,T extends AdvancedChest<I
      * @param pages the uuid instance
      * @return the ChestBuilder.
      */
-    ChestBuilder<I,P,T> setPages(Set<P> pages);
+    ChestBuilder<I,P,T> setPages(Map<Integer,P> pages);
 
     /**
      * Sets the amount of money of the chest.

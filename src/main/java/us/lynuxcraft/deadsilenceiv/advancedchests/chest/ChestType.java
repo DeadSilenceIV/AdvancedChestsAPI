@@ -10,13 +10,13 @@ import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.sorter.SorterSe
 import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.storage.mysql.MysqlService;
 import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.storage.yaml.YamlService;
 
-import java.util.Set;
+import java.util.Map;
 
 public interface ChestType {
 
     String getName();
 
-    ChestBuilder<?,?,?> newBuilder(int size, String configType, String location, Set<? extends ChestPage<?>> pages);
+    ChestBuilder<?,?,?> newBuilder(int size, String configType, String location, Map<Integer,? extends ChestPage<?>> pages);
 
     MysqlService getMysqlService();
 
