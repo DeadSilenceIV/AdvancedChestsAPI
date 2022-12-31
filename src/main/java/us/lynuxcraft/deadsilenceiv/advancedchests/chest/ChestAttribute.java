@@ -49,7 +49,9 @@ public enum ChestAttribute {
     COMPRESSOR_PRICE("compressor.price",0.0,Double.class),
     COMPRESSOR_SLOT("compressor.slot",7,Integer.class),
     DEPOSIT_AVAILABILITY("deposit.enable",false,Boolean.class),
-    CONTAINER_TYPE("container.type","CHEST",null);
+    CONTAINER_TYPE("container.type","CHEST",null),
+    SEARCH_AVAILABILITY("search.enable",false,Boolean.class),
+    SEARCH_SLOT("search.slot",3,Integer.class);
     @Getter private String configPath;
     @Getter private Object defaultConfigValue;
     @Getter private Class configValueClass;

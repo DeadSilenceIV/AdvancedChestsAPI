@@ -5,6 +5,7 @@ import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import us.lynuxcraft.deadsilenceiv.advancedchests.managers.yml.LanguagesConfiguration;
+import us.lynuxcraft.deadsilenceiv.advancedchests.utils.Pair;
 
 import java.util.List;
 import java.util.Optional;
@@ -188,6 +189,17 @@ public class LanguagesManager {
     @Getter private String compressionAnythingToCompress;
     @Getter private String compressionOnCompressProcess;
     @Getter private String openChestOnCompressionFail;
+    @Getter private String guiSearchIconName;
+    @Getter private String guiSearchIconHead;
+    @Getter private List<String> guiSearchIconLore;
+    @Getter private Material guiSearchIconMaterial;
+    @Getter private Integer guiSearchIconCustomModelData;
+    @Getter private Pair<String[],Integer> guiSearchSignInput;
+    @Getter private String searchNoResults;
+    @Getter private String searchFoundResultsHeader;
+    @Getter private String searchFoundResultsResultMessage;
+    @Getter private String searchFoundResultsResultHover;
+    @Getter private String searchOpenSearchFail;
     private ConfigurationSection languages;
     public LanguagesManager(){
         languages = new LanguagesConfiguration().getSection();
@@ -398,10 +410,22 @@ public class LanguagesManager {
         compressionAnythingToCompress = languages.getString("compressions.anything-to-compress","&cThere is anything to compress in this chest!");
         compressionOnCompressProcess = languages.getString("compressions.process","&cThe chest will be compress in &6%time% &cseconds&6!");
         openChestOnCompressionFail = languages.getString("compressions.openchest-oncompression-fail","&cThis chest is currently being compressed, please wait...&6!");
+        guiSearchIconName = languages.getString("gui.search.icon.name","&b&lSearch Item");
+        guiSearchIconHead = languages.getString("gui.search.icon.head","");
+        guiSearchIconLore = languages.getStringList("gui.search.icon.lore");
+        guiSearchIconMaterial = fetchMaterial("gui.search.icon.material",XMaterial.COMPASS.parseMaterial());
+        guiSearchIconCustomModelData = languages.getInt("gui.search.icon.custom-model-data");
+        guiSearchSignInput = getSearchSignInput();
+
+        searchNoResults = languages.getString("search.no-results");
+        searchFoundResultsHeader = languages.getString("search.found-results.header");
+        searchFoundResultsResultMessage = languages.getString("search.found-results.result.message");
+        searchFoundResultsResultHover = languages.getString("search.found-results.result.hover");
+        searchOpenSearchFail = languages.getString("search.open-search-fail");
     }
 
     /**
-     * Gets the Material of an specified ConfigurationSection path.
+     * Gets the Material of a specified ConfigurationSection path.
      *
      * @param path the ConfigurationSection path
      * @param defaultMaterial the default material to return
@@ -437,4 +461,24 @@ public class LanguagesManager {
         }
         return message;
     }
+
+    private Pair<String[],Integer> getSearchSignInput(){
+        String[] lines = new String[4];
+        int input = -1;
+        List<String> content = languages.getStringList("gui.search.sign-input");
+        for (int i = 0; i < 4; i++) {
+            if(i <= content.size()-1){
+                String line = content.get(i);
+                if(input == -1 && line.contains("%input%")){
+                    input = i;
+                    line = line.replaceAll("%input%","");
+                }
+                lines[i] = line;
+            }else{
+                lines[i] = "";
+            }
+        }
+        return new Pair<>(lines,input);
+    }
+
 }

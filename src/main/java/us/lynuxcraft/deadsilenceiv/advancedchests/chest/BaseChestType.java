@@ -3,6 +3,7 @@ package us.lynuxcraft.deadsilenceiv.advancedchests.chest;
 import lombok.Getter;
 import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.compressor.PageBatchCompressor;
 import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.dispenser.DispenserService;
+import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.search.SearchService;
 import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.sells.PageBatchSeller;
 import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.smelter.SmelterService;
 import us.lynuxcraft.deadsilenceiv.advancedchests.services.chest.sorter.SorterService;
@@ -20,6 +21,7 @@ public abstract class BaseChestType implements ChestType{
     protected PageBatchSeller pageBatchSeller;
     protected DispenserService dispenserService;
     protected PageBatchCompressor pageBatchCompressor;
+    protected SearchService searchService;
     public BaseChestType(String name) {
         this.name = name;
     }

@@ -210,6 +210,24 @@ public interface DataManager {
     boolean isDepositAvailable(String chest);
 
     /**
+     * Use this method to know if the search function is available for
+     * a certain type of advanced chest.
+     *
+     * @param chest the advanced chest type
+     * @return true if the search function is available, false otherwise.
+     */
+    boolean isSearchAvailable(String chest);
+
+    /**
+     * Use this method to know the slot of the search button for
+     * a specified type of advanced chest.
+     *
+     * @param chest the advanced chest type
+     * @return the slot of the button.
+     */
+    int getSearchSlot(String chest);
+
+    /**
      * Use this method to know the slot of Previous Page button for
      * a specified type of advanced chest.
      *
@@ -318,7 +336,7 @@ public interface DataManager {
     /**
      * Get all the non-loadable advanced chests types
      *
-     * @return a string list of all the non loaded advanced chests types.
+     * @return a string list of all the non-loaded advanced chests types.
      */
     Set<String> getUnLoadableChestsNames();
 
