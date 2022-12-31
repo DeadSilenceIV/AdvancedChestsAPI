@@ -3,6 +3,7 @@ package us.lynuxcraft.deadsilenceiv.advancedchests.utils.inventory;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import us.lynuxcraft.deadsilenceiv.advancedchests.chest.gui.page.ChestPage;
 
 public class InventoryUtils {
 
@@ -25,6 +26,21 @@ public class InventoryUtils {
         int size = (inventory.getType() == InventoryType.PLAYER) ? inventory.getSize()-5 : inventory.getSize();
         int maxStackSize = itemStack.getMaxStackSize();
         for(int i = 0; i<= size-1;i++){
+            ItemStack item = inventory.getItem(i);
+            if(item == null){
+                return true;
+            }else if((item.getAmount()+itemStack.getAmount()) <= maxStackSize && item.isSimilar(itemStack)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean hasSpaceForItem(ChestPage<?> page, ItemStack itemStack){
+        Inventory inventory = page.getBukkitInventory();
+        int size = inventory.getSize()-9;
+        int maxStackSize = itemStack.getMaxStackSize();
+        for(int i = size-1; i >= 0;i--){
             ItemStack item = inventory.getItem(i);
             if(item == null){
                 return true;
