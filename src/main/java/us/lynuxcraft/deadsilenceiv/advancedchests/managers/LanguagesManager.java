@@ -200,6 +200,7 @@ public class LanguagesManager {
     @Getter private String searchFoundResultsResultMessage;
     @Getter private String searchFoundResultsResultHover;
     @Getter private String searchOpenSearchFail;
+    @Getter private Pair<String[],Integer> guiGoToPage;
     private ConfigurationSection languages;
     public LanguagesManager(){
         languages = new LanguagesConfiguration().getSection();
@@ -415,13 +416,15 @@ public class LanguagesManager {
         guiSearchIconLore = languages.getStringList("gui.search.icon.lore");
         guiSearchIconMaterial = fetchMaterial("gui.search.icon.material",XMaterial.COMPASS.parseMaterial());
         guiSearchIconCustomModelData = languages.getInt("gui.search.icon.custom-model-data");
-        guiSearchSignInput = getSearchSignInput();
+        guiSearchSignInput = getSignGUIInput("gui.search.sign-input");
 
         searchNoResults = languages.getString("search.no-results");
         searchFoundResultsHeader = languages.getString("search.found-results.header");
         searchFoundResultsResultMessage = languages.getString("search.found-results.result.message");
         searchFoundResultsResultHover = languages.getString("search.found-results.result.hover");
         searchOpenSearchFail = languages.getString("search.open-search-fail");
+
+        guiGoToPage = getSignGUIInput("gui.go-to-page");
     }
 
     /**
@@ -462,10 +465,10 @@ public class LanguagesManager {
         return message;
     }
 
-    private Pair<String[],Integer> getSearchSignInput(){
+    private Pair<String[],Integer> getSignGUIInput(String section){
         String[] lines = new String[4];
         int input = -1;
-        List<String> content = languages.getStringList("gui.search.sign-input");
+        List<String> content = languages.getStringList(section);
         for (int i = 0; i < 4; i++) {
             if(i <= content.size()-1){
                 String line = content.get(i);
