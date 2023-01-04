@@ -70,7 +70,7 @@ public class SkullBuilder extends ItemBuilder{
 
     private static ItemStack getSkull(){
         if(cachedSkull == null){
-            cachedSkull = XMaterial.SKELETON_SKULL.parseItem();
+            cachedSkull = XMaterial.PLAYER_HEAD.parseItem();
         }
         return cachedSkull;
     }
