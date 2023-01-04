@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @SuppressWarnings("all")
-public class SkullBuilder extends ItemBuilder{
+public class SkullBuilder extends ItemBuilder {
     private final static Map<String, SkullMeta> CACHED_META = new HashMap<>();
     private static ItemStack cachedSkull;
     private static Method setProfileMethod;
@@ -25,7 +25,7 @@ public class SkullBuilder extends ItemBuilder{
         if(!CACHED_META.containsKey(address)){
             SkullMeta skullMeta = (SkullMeta)stack.getItemMeta();
             if(!skullMeta.setOwner(address) && address.length() > 16){
-                setOwnerByUrl(stack, address);
+                skullMeta = setOwnerByUrl(stack, address);
             }else{
                 stack.setItemMeta(skullMeta);
             }
@@ -35,7 +35,7 @@ public class SkullBuilder extends ItemBuilder{
         }
     }
 
-    private ItemStack setOwnerByUrl(ItemStack item,String url){
+    private SkullMeta setOwnerByUrl(ItemStack item, String url){
         SkullMeta headMeta = (SkullMeta) item.getItemMeta();
         GameProfile profile = new GameProfile(UUID.randomUUID(), null);
         byte[] data;
@@ -65,7 +65,7 @@ public class SkullBuilder extends ItemBuilder{
             }
         }
         item.setItemMeta(headMeta);
-        return item;
+        return headMeta;
     }
 
     private static ItemStack getSkull(){
