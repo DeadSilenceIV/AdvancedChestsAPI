@@ -21,6 +21,8 @@ public class ItemBuilder{
         stack = itemStack.clone();
     }
 
+    public ItemBuilder(){}
+
     public ItemBuilder setAmount(Integer amount){
         stack.setAmount(amount);
         return this;

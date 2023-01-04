@@ -25,8 +25,7 @@ public class BaseButton<T extends ButtonItem> implements Button<T> {
     protected ItemStack getItemStack(Material material, String name, String headName , List<String> lore, Integer customModelData){
         ItemStack item;
         if(material == XMaterial.PLAYER_HEAD.parseMaterial()){
-            item = new SkullBuilder()
-                    .setOwner(headName)
+            item = new SkullBuilder(headName)
                     .setName(name)
                     .setLore(lore)
                     .setCustomModelData(customModelData)

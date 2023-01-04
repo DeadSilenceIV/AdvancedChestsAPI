@@ -28,7 +28,7 @@ public class BaseShareableButtonItem extends BaseButtonItem<ShareableButton> imp
     }
 
     private void setItem(InteractiveInventory inventory){
-        inventory.getBukkitInventory().setItem(button.getSlot(inventory), itemStack.clone());
+        inventory.getBukkitInventory().setItem(button.getSlot(inventory), itemStack);
     }
 
 }
