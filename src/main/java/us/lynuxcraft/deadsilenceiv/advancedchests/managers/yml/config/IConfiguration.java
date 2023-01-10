@@ -245,6 +245,13 @@ public interface IConfiguration {
     boolean getCallChestRemoveEvent();
 
     /**
+     * Checks if the {@link us.lynuxcraft.deadsilenceiv.advancedchests.events.PostChestSellEvent} should be called.
+     *
+     * @return true if the event should be called, false otherwise.
+     */
+    boolean getCallPostChestSellEvent();
+
+    /**
      * Gives the status of the Backups.
      *
      * @return true if the backups are enabled.
